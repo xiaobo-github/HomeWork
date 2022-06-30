@@ -1,4 +1,4 @@
-package com.orakcool;
+package com.orakcool.hw_1;
 
 public class Main {
 
