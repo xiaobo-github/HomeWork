@@ -1,2 +1,1 @@
-# nix Home work
-Vakulenko Evgeniy
+# Vakulenko Evgeniy
