@@ -1,6 +1,4 @@
-package com.alevel.base;
-
-import com.alevel.base.Core.Program;
+package com.orakcool;
 
 public class Main {
 
