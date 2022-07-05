@@ -1,5 +1,10 @@
 .idea
 *.iml
 *.class
+# Log file
+*.log
+# BlueJ files
+*.ctxt
+
 */target
 */build
