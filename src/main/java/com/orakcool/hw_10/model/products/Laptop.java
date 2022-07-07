@@ -9,7 +9,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 public class Laptop extends Product {
     private final String model;
     private final Manufacturer manufacturer;

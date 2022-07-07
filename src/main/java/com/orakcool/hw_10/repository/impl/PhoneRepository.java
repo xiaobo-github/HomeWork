@@ -12,7 +12,6 @@ public class PhoneRepository implements PhoneCrudRepository {
         phones = new LinkedList<>();
     }
 
-
     @Override
     public void save(Phone phone) {
             phones.add(phone);
