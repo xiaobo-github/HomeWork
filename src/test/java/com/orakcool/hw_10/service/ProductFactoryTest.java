@@ -1,8 +1,10 @@
 package com.orakcool.hw_10.service;
 
 import com.orakcool.hw_10.model.Product;
+import com.orakcool.hw_10.model.ProductType;
 import com.orakcool.hw_10.model.products.ElectricScooter;
 import com.orakcool.hw_10.model.products.Laptop;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -21,7 +23,11 @@ class ProductFactoryTest {
 
     @Test
     void createProduct() {
-        Mockito.when(productFactory).thenCallRealMethod();
+        ProductType testType = ProductType.LAPTOP;
+        Mockito.when(productFactory.createProduct(Mockito.any(ProductType.class))).thenCallRealMethod();
+        Product testProduct = productFactory.createProduct(ProductType.LAPTOP);
+
+        Assertions.assertEquals(testType,testProduct.getType());
     }
 
     @Test
