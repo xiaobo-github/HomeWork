@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProductFactoryTest {
 
-    private static Product product;
     private static ProductFactory productFactory;
 
     @BeforeEach
