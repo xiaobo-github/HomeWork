@@ -23,16 +23,15 @@ public class Main {
         myServices.put(ProductType.LAPTOP,new ProductService(new LaptopRepository()));
         myServices.put(ProductType.ELECTRICSCOOTER,new ProductService(new ElecricScooterRepository()));
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             myServices.get(ProductType.PHONE).add(ProductFactory.createProduct(ProductType.PHONE));
             myServices.get(ProductType.LAPTOP).add(ProductFactory.createProduct(ProductType.LAPTOP));
             myServices.get(ProductType.ELECTRICSCOOTER).add(ProductFactory.createProduct(ProductType.ELECTRICSCOOTER));
         }
 
         myServices.forEach((productType, service) -> LOG.info("Create products: {}", service.getAll()));
-        System.out.println("--------------------------------");
-        myServices.forEach((productType, service) -> service.printAll());
-        System.out.println("--------------------------------");
+
+        printAll();
 
         Random random = new Random();
         ProductType randomProductType = ProductType.values()[random.nextInt(ProductType.values().length)];
@@ -42,16 +41,18 @@ public class Main {
         LOG.info("Update product: {}", randomProduct);
         randomProduct.setPrice(753.5);
         myServices.get(randomProductType).update(randomProduct);
+        System.out.printf("Price now set to: %s%n", Double.toString(randomProduct.getPrice()));
 
-        System.out.printf("Price now set to: %s%n" , Double.toString(randomProduct.getPrice()));
-        System.out.println("--------------------------------");
-        myServices.forEach((productType, service) -> service.printAll());
-        System.out.println("--------------------------------");
+        printAll();
 
-        LOG.info("Delete product: {}" , randomProduct);
+        LOG.info("Delete product: {}", randomProduct);
         myServices.get(randomProductType).delete(randomProduct.getId());
-
         System.out.printf("product with id: %s deleted%n", randomProduct.getId());
+
+        printAll();
+    }
+
+    private static void printAll(){
         System.out.println("--------------------------------");
         myServices.forEach((productType, service) -> service.printAll());
         System.out.println("--------------------------------");

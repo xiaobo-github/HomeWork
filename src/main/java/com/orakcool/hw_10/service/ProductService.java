@@ -1,11 +1,9 @@
 package com.orakcool.hw_10.service;
 
 import com.orakcool.hw_10.model.Product;
-import com.orakcool.hw_10.model.products.ElectricScooter;
 import com.orakcool.hw_10.repository.AbstractCrudRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 public class ProductService {
 
@@ -15,20 +13,18 @@ public class ProductService {
         REPOSITORY = repository;
     }
 
-    public int size() {
-        return REPOSITORY.getAll().size();
-    }
-
     public void add(Product product) {
+        if(product == null){
+            throw new IllegalArgumentException("added product must not be null");
+        }
         REPOSITORY.save(product);
     }
 
     public void update(Product product) {
+        if(product == null){
+            throw new IllegalArgumentException("updated product must not be null");
+        }
         REPOSITORY.update(product);
-    }
-
-    public Optional<Product> findById(String id) {
-        return Optional.of((Product)REPOSITORY.findById(id).get());
     }
 
     public List<Product> getAll() {

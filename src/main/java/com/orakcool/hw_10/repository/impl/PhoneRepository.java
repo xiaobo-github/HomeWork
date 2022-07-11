@@ -8,13 +8,14 @@ import java.util.*;
 public class PhoneRepository implements PhoneCrudRepository {
     private final List<Phone> phones;
 
+
     public PhoneRepository() {
         phones = new LinkedList<>();
     }
 
     @Override
     public void save(Phone phone) {
-            phones.add(phone);
+        phones.add(phone);
     }
 
     @Override

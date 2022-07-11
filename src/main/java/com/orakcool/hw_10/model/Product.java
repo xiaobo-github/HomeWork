@@ -7,7 +7,9 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public abstract class Product {
+public abstract class
+
+Product {
     protected final String id;
     protected String title;
     protected int count;
