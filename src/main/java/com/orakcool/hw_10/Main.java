@@ -2,7 +2,7 @@ package com.orakcool.hw_10;
 
 import com.orakcool.hw_10.model.Product;
 import com.orakcool.hw_10.model.ProductType;
-import com.orakcool.hw_10.repository.impl.ElecricScooterRepository;
+import com.orakcool.hw_10.repository.impl.ElectricScooterRepository;
 import com.orakcool.hw_10.repository.impl.LaptopRepository;
 import com.orakcool.hw_10.repository.impl.PhoneRepository;
 import com.orakcool.hw_10.service.*;
@@ -21,7 +21,7 @@ public class Main {
 
         myServices.put(ProductType.PHONE,new ProductService(new PhoneRepository()));
         myServices.put(ProductType.LAPTOP,new ProductService(new LaptopRepository()));
-        myServices.put(ProductType.ELECTRICSCOOTER,new ProductService(new ElecricScooterRepository()));
+        myServices.put(ProductType.ELECTRICSCOOTER,new ProductService(new ElectricScooterRepository()));
 
         for (int i = 0; i < 2; i++) {
             myServices.get(ProductType.PHONE).add(ProductFactory.createProduct(ProductType.PHONE));

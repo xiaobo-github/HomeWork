@@ -1,7 +1,9 @@
 package com.orakcool.hw_10.model.products;
+
 import com.orakcool.hw_10.model.Manufacturer;
 import com.orakcool.hw_10.model.Product;
 import com.orakcool.hw_10.model.ProductType;
+
 import lombok.Getter;
 import lombok.Setter;
 

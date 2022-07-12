@@ -4,9 +4,9 @@ import com.orakcool.hw_10.model.products.ElectricScooter;
 import com.orakcool.hw_10.repository.ElectricScooterCrudRepository;
 
 import java.util.*;
-public class ElecricScooterRepository implements ElectricScooterCrudRepository {
+public class ElectricScooterRepository implements ElectricScooterCrudRepository {
     private final List<ElectricScooter> electricScooters;
-    public ElecricScooterRepository() {
+    public ElectricScooterRepository() {
         electricScooters = new LinkedList<>();
     }
 
