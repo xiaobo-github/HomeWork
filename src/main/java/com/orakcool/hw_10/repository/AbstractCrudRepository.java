@@ -5,16 +5,16 @@ import com.orakcool.hw_10.model.Product;
 import java.util.List;
 import java.util.Optional;
 
-public interface AbstractCrudRepository <P extends Product>{
-    void save(P product);
+public interface AbstractCrudRepository <T extends Product>{
+    void save(T product);
 
-    void saveAll(List<P> product);
+    void saveAll(List<T> product);
 
-    boolean update(P product);
+    boolean update(T product);
 
     boolean delete(String id);
 
-    List<P> getAll();
+    List<T> getAll();
 
-    Optional<P> findById(String id);
+    Optional<T> findById(String id);
 }

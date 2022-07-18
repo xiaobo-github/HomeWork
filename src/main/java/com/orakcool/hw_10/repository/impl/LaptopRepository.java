@@ -1,10 +1,10 @@
 package com.orakcool.hw_10.repository.impl;
-
 import com.orakcool.hw_10.model.products.Laptop;
-import com.orakcool.hw_10.repository.LaptopCrudRepository;
+import com.orakcool.hw_10.repository.AbstractCrudRepository;
 
 import java.util.*;
-public class LaptopRepository implements LaptopCrudRepository {
+
+public class LaptopRepository implements AbstractCrudRepository<Laptop> {
     private final List<Laptop> laptops;
 
     public LaptopRepository() {

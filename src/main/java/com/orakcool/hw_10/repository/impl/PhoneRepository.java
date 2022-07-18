@@ -1,11 +1,11 @@
 package com.orakcool.hw_10.repository.impl;
 
 import com.orakcool.hw_10.model.products.Phone;
-import com.orakcool.hw_10.repository.PhoneCrudRepository;
+import com.orakcool.hw_10.repository.AbstractCrudRepository;
 
 import java.util.*;
 
-public class PhoneRepository implements PhoneCrudRepository {
+public class PhoneRepository implements AbstractCrudRepository<Phone> {
     private final List<Phone> phones;
 
     public PhoneRepository() {
@@ -14,7 +14,7 @@ public class PhoneRepository implements PhoneCrudRepository {
 
     @Override
     public void save(Phone phone) {
-            phones.add(phone);
+        phones.add(phone);
     }
 
     @Override

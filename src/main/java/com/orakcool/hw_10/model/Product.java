@@ -1,13 +1,15 @@
 package com.orakcool.hw_10.model;
 
+import java.util.UUID;
+
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Getter
 @Setter
-public abstract class Product {
+public abstract class
+
+Product {
     protected final String id;
     protected String title;
     protected int count;
