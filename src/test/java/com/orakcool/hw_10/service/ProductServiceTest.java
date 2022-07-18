@@ -1,12 +1,15 @@
 package com.orakcool.hw_10.service;
 
 import com.orakcool.hw_10.model.Product;
+import com.orakcool.hw_10.model.ProductType;
 import com.orakcool.hw_10.repository.AbstractCrudRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,9 +23,11 @@ class ProductServiceTest {
     void setUp() {
         repositoryMock = Mockito.mock(new AbstractCrudRepository(){
 
+            private static List<Product> products = new ArrayList<>();
+
             @Override
             public void save(Product product) {
-
+                products.add(product);
             }
 
             @Override
@@ -42,7 +47,7 @@ class ProductServiceTest {
 
             @Override
             public List getAll() {
-                return null;
+                return products;
             }
 
             @Override
@@ -56,27 +61,41 @@ class ProductServiceTest {
 
     @Test
     void add() {
+        Mockito.doCallRealMethod().when(repositoryMock).save(productMock);
+        Mockito.when(repositoryMock.getAll()).thenCallRealMethod();
+
         target.add(productMock);
+
         Mockito.verify(repositoryMock).save(productMock);
+        Assertions.assertEquals(1,repositoryMock.getAll().size());
     }
 
     @Test
     void add_addNull() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> target.add(null));
+        Assertions.assertThrows(IllegalArgumentException.class,() -> target.add(null));
     }
 
     @Test
-    void update() {
-        Mockito.when(repositoryMock.update(productMock)).thenCallRealMethod();
+    void update(){
+        final String title = "product for test";
+        Product product = new Product(title,1,5.5,ProductType.values()[0]) {
+            @Override
+            public String getId() {
+                return super.getId();
+            }
+        };
+        target.update(product);
 
-        target.update(productMock);
+        ArgumentCaptor<Product> productArgumentCaptor = ArgumentCaptor.forClass(Product.class);
+        Mockito.verify(repositoryMock).update(productArgumentCaptor.capture());
 
-        Mockito.verify(repositoryMock).update(productMock);
+        Assertions.assertEquals(title,productArgumentCaptor.getValue().getTitle());
+        Assertions.assertEquals(1,productArgumentCaptor.getValue().getCount());
     }
 
     @Test
     void update_addNull() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> target.update(null));
+        Assertions.assertThrows(IllegalArgumentException.class,() -> target.update(null));
     }
 
     @Test
@@ -93,7 +112,9 @@ class ProductServiceTest {
 
     @Test
     void delete() {
-        target.delete("looks like an id");
-        Mockito.verify(repositoryMock, Mockito.atLeastOnce()).delete(Mockito.any());
+        final String id = "looks like an id";
+        Mockito.when(repositoryMock.delete(Mockito.eq(id))).thenReturn(true);
+
+        Assertions.assertEquals(true,target.delete(id));
     }
 }

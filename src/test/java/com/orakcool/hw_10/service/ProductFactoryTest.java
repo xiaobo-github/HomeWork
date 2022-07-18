@@ -5,6 +5,8 @@ import com.orakcool.hw_10.model.ProductType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 class ProductFactoryTest {
 
@@ -12,12 +14,10 @@ class ProductFactoryTest {
     void setUp(){
     }
 
-    @Test
-    void createProduct() {
-        final ProductType[] testTypes = ProductType.values();
-        for (ProductType type: testTypes) {
-            Assertions.assertEquals(type,ProductFactory.createProduct(type).getType());
-        }
+    @ParameterizedTest
+    @EnumSource(ProductType.class)
+    void createProduct(ProductType type) {
+        Assertions.assertEquals(type, ProductFactory.createProduct(type).getType());
     }
 
     @Test

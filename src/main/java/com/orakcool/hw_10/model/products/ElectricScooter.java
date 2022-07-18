@@ -21,7 +21,7 @@ public class ElectricScooter extends Product {
 
     @Override
     public String toString() {
-        return "ElectricScooter{" +
+        return "Electric_scooter{" +
                 "manufacturer=" + manufacturer +
                 ", id='" + id + '\'' +
                 ", title='" + title + '\'' +
