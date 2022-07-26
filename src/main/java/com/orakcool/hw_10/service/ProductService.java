@@ -1,15 +1,15 @@
 package com.orakcool.hw_10.service;
 
 import com.orakcool.hw_10.model.Product;
-import com.orakcool.hw_10.repository.AbstractCrudRepository;
+import com.orakcool.hw_10.repository.AbstractCRUDRepository;
 
 import java.util.List;
 
 public class ProductService {
 
-    private AbstractCrudRepository REPOSITORY;
+    private final AbstractCRUDRepository REPOSITORY;
 
-    public ProductService(AbstractCrudRepository repository) {
+    public ProductService(AbstractCRUDRepository repository) {
         REPOSITORY = repository;
     }
 

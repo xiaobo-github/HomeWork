@@ -2,7 +2,7 @@ package com.orakcool.hw_10.service;
 
 import com.orakcool.hw_10.model.Product;
 import com.orakcool.hw_10.model.ProductType;
-import com.orakcool.hw_10.repository.AbstractCrudRepository;
+import com.orakcool.hw_10.repository.AbstractCRUDRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,12 +16,12 @@ import java.util.Optional;
 class ProductServiceTest {
 
     private ProductService target;
-    private AbstractCrudRepository repositoryMock;
+    private AbstractCRUDRepository repositoryMock;
     private Product productMock;
 
     @BeforeEach
     void setUp() {
-        repositoryMock = Mockito.mock(new AbstractCrudRepository(){
+        repositoryMock = Mockito.mock(new AbstractCRUDRepository(){
 
             private static List<Product> products = new ArrayList<>();
 
