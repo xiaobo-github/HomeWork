@@ -5,7 +5,7 @@ import com.orakcool.hw_10.model.Product;
 import java.util.List;
 import java.util.Optional;
 
-public interface AbstractCrudRepository <T extends Product>{
+public interface AbstractCRUDRepository<T extends Product>{
     void save(T product);
 
     void saveAll(List<T> product);

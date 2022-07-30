@@ -11,7 +11,7 @@ public class DiscountCard extends Product {
     @Override
     public String toString() {
         return "Discount_card{" +
-                ", id='" + id + '\'' +
+                "id='" + id + '\'' +
                 ", title='" + title + '\''+
                 '}';
     }
