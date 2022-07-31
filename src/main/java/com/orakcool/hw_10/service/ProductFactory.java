@@ -7,7 +7,9 @@ import com.orakcool.hw_10.model.products.DiscountCard;
 import com.orakcool.hw_10.model.products.ElectricScooter;
 import com.orakcool.hw_10.model.products.Laptop;
 import com.orakcool.hw_10.model.products.Phone;
+import lombok.SneakyThrows;
 
+import java.util.Optional;
 import java.util.Random;
 
 public class ProductFactory {
@@ -16,7 +18,8 @@ public class ProductFactory {
 
     }
 
-    public static Product createProduct(ProductType type) {
+    @SneakyThrows
+    public static Product createProduct(ProductType type){
         Random RANDOM = new Random();
 
         return switch (type){
@@ -44,6 +47,7 @@ public class ProductFactory {
             case DISCOUNTCARD -> new DiscountCard();
             default -> throw new IllegalArgumentException("Unknown product type: " + type);
         };
+
     }
 
     public static Manufacturer getRandomManufacturer() {

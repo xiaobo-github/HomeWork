@@ -5,37 +5,37 @@ import com.orakcool.hw_10.repository.AbstractCRUDRepository;
 
 import java.util.List;
 
-public class ProductService {
+public class ProductService<T extends Product> {
 
-    private final AbstractCRUDRepository REPOSITORY;
+    private AbstractCRUDRepository<T> repository;
 
-    public ProductService(AbstractCRUDRepository repository) {
-        REPOSITORY = repository;
+    public ProductService(AbstractCRUDRepository<T> repository) {
+        this.repository = repository;
     }
 
-    public void add(Product product) {
+    public void add(T product) {
         if(product == null){
             throw new IllegalArgumentException("added product must not be null");
         }
-        REPOSITORY.save(product);
+        repository.save(product);
     }
 
-    public void update(Product product) {
+    public void update(T product) {
         if(product == null){
             throw new IllegalArgumentException("updated product must not be null");
         }
-        REPOSITORY.update(product);
+        repository.update(product);
     }
 
-    public List<Product> getAll() {
-        return REPOSITORY.getAll();
+    public List<T> getAll() {
+        return repository.getAll();
     }
 
     public void printAll() {
-        REPOSITORY.getAll().forEach(product -> System.out.println(product));
+        repository.getAll().forEach(System.out::println);
     }
 
     public boolean delete(String id) {
-        return REPOSITORY.delete(id);
+        return repository.delete(id);
     }
 }
