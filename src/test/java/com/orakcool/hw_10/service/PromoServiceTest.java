@@ -153,10 +153,10 @@ class PromoServiceTest {
         Product testProduct = ProductFactory.createProduct(ProductType.values()[0]);
         double price = testProduct.getPrice();
         Mockito.when(randoms.getOptionalProduct()).thenReturn(Optional
-                .ofNullable(testProduct));
+                .of(testProduct));
         Mockito.when(randoms.nextDiscount(maxDiscount)).thenReturn(maxDiscount);
 
-        Product discountingProduct = promoService.getYourDiscount(randoms.getOptionalProduct(), maxDiscount);
+        Product discountingProduct = promoService.getYourDiscount(randoms.getOptionalProduct().get(), maxDiscount);
         Assertions.assertEquals(price*maxDiscount, discountingProduct.getPrice());
     }
 
@@ -165,12 +165,12 @@ class PromoServiceTest {
         double maxDiscount = 0.3;
         Mockito.when(randoms.getOptionalProduct()).thenReturn(Optional.empty());
 
-        Assertions.assertThrows(IllegalArgumentException.class, () ->promoService.getYourDiscount(randoms.getOptionalProduct(), maxDiscount));
+        Assertions.assertThrows(IllegalArgumentException.class, () ->promoService.getYourDiscount(randoms.getOptionalProduct().get(), maxDiscount));
     }
 
     @Test
     void isDiscount() {
-        Optional<Product> product = Optional.ofNullable(ProductFactory.createProduct(ProductType.values()[0]));
+        Product product = ProductFactory.createProduct(ProductType.values()[0]);
         Mockito.when(randoms.getOptionalProduct()).thenReturn(Optional
                 .ofNullable(ProductFactory
                         .createProduct(ProductType.values()[0])));
@@ -180,7 +180,7 @@ class PromoServiceTest {
 
     @Test
     void isDiscount_isNot() {
-        Optional<Product> product = Optional.ofNullable(ProductFactory.createProduct(ProductType.values()[0]));
+        Product product = ProductFactory.createProduct(ProductType.values()[0]);
         Mockito.when(randoms.getOptionalProduct()).thenReturn(Optional.empty());
 
         Assertions.assertFalse(promoService.isDiscount(product));

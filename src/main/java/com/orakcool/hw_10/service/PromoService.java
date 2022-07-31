@@ -78,15 +78,15 @@ public class PromoService {
         return result.get();
     }
 
-    public Product getYourDiscount(Optional<Product> product,double maxDiscount){
-        Product discountingProduct = product.orElseThrow(IllegalArgumentException::new);
+    public Product getYourDiscount(Product product,double maxDiscount){
+        Product discountingProduct = Optional.ofNullable(product).orElseThrow(IllegalArgumentException::new);
         double price = discountingProduct.getPrice();
         discountingProduct.setPrice(price * randoms.nextDiscount(maxDiscount));
         return discountingProduct;
     }
 
-    public boolean isDiscount(Optional<Product> usersProduct){
-        return usersProduct.filter(value -> randoms.getOptionalProduct()
+    public boolean isDiscount(Product usersProduct){
+        return Optional.ofNullable(usersProduct).filter(value -> randoms.getOptionalProduct()
                 .filter(product -> product.getType() == value.getType())
                 .isPresent()).isPresent();
     }
