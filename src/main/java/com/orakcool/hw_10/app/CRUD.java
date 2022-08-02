@@ -37,12 +37,12 @@ public class CRUD {
         Random random = new Random();
         ProductType randomProductType = ProductType.values()[random.nextInt(ProductType.values().length-1)];
         int randomIndex = random.nextInt(myServices.get(randomProductType).getAll().size());
-        Product randomProduct = myServices.get(randomProductType).getAll().get(randomIndex);
+        Product randomProduct =(Product) myServices.get(randomProductType).getAll().get(randomIndex);
 
         LOG.info("Update product: {}", randomProduct);
         randomProduct.setPrice(753.5);
         myServices.get(randomProductType).update(randomProduct);
-        System.out.printf("Price now set to: %s%n", Double.toString(randomProduct.getPrice()));
+        System.out.printf("Price now set to: %s%n", randomProduct.getPrice());
 
         printAll();
 
@@ -58,4 +58,5 @@ public class CRUD {
         myServices.forEach((productType, service) -> service.printAll());
         System.out.println("--------------------------------");
     }
+
 }
