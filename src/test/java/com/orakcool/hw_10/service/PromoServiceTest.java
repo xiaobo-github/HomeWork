@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 class PromoServiceTest {
@@ -165,7 +166,7 @@ class PromoServiceTest {
         double maxDiscount = 0.3;
         Mockito.when(randoms.getOptionalProduct()).thenReturn(Optional.empty());
 
-        Assertions.assertThrows(IllegalArgumentException.class, () ->promoService.getYourDiscount(randoms.getOptionalProduct().get(), maxDiscount));
+        Assertions.assertThrows(NoSuchElementException.class, () ->promoService.getYourDiscount(randoms.getOptionalProduct().get(), maxDiscount));
     }
 
     @Test
