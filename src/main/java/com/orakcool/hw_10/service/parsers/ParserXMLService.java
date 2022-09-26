@@ -1,8 +1,7 @@
-package com.orakcool.hw_10.service.parsers.xmlParsers;
+package com.orakcool.hw_10.service.parsers;
 
 import com.orakcool.hw_10.model.ParseModel;
 import com.orakcool.hw_10.model.Product;
-import com.orakcool.hw_10.service.parsers.Parsers;
 import com.orakcool.hw_10.util.ParseXML;
 
 import java.util.HashMap;
@@ -10,7 +9,6 @@ import java.util.HashMap;
 import static com.orakcool.hw_10.util.ParseXML.*;
 
 public class ParserXMLService <T extends Product> {
-
     public T parse(String source) {
         String tag = matchTag(source, START_TAG);
 

@@ -14,6 +14,7 @@ public class ProductService<T extends Product> {
     }
 
     public void add(T product) {
+
         if(product == null){
             throw new IllegalArgumentException("added product must not be null");
         }
@@ -29,6 +30,14 @@ public class ProductService<T extends Product> {
 
     public List<T> getAll() {
         return repository.getAll();
+    }
+
+    public T get(String id) {
+        return repository.getAll()
+                .stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public void printAll() {

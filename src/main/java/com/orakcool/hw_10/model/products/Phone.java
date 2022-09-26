@@ -17,7 +17,6 @@ public class Phone extends Product {
     private Manufacturer manufacturer;
     private OperationSystem operatingSystem;
     private LocalDateTime created;
-
     private String priceCurrency;
 
     public Phone(String title, int count, double price, String model, Manufacturer manufacturer) {
@@ -31,8 +30,9 @@ public class Phone extends Product {
     @Override
     public String toString() {
         return "Phone{" +
-                "model='" + model + '\'' +
-                ", manufacturer=" + manufacturer +
+                "manufacturer=" + manufacturer +
+                ", id='" + id + '\'' +
+                ", model='" + model + '\'' +
                 ", " + operatingSystem.toString() +
                 ", created=" + created +
                 ", priceCurrency='" + priceCurrency + '\'' +
