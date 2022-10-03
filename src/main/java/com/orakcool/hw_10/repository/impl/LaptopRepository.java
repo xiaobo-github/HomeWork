@@ -1,4 +1,5 @@
 package com.orakcool.hw_10.repository.impl;
+
 import com.orakcool.hw_10.model.products.Laptop;
 import com.orakcool.hw_10.repository.AbstractCRUDRepository;
 

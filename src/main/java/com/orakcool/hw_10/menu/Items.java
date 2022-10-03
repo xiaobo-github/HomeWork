@@ -12,7 +12,8 @@ public enum Items {
     DELETE("Delete product", new Delete()),
     LIST("Demo of a custom list of products", new DemoList()),
     PARSERS("Demo of json and xml parsers",new DemoParsers()),
-    TREE("Demo of binary tree", new DemoTree());
+    TREE("Demo of binary tree", new DemoTree()),
+    STEAM_API("Demo of stream api", new DemoStreamAPI());
 
     private final boolean exitFromMenu;
     private final String message;

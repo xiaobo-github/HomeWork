@@ -14,6 +14,8 @@ import com.orakcool.hw_10.repository.impl.PhoneRepository;
 import com.orakcool.hw_10.util.SubProduct;
 import lombok.SneakyThrows;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -28,10 +30,10 @@ public class ProductFactory {
     }
 
     @SneakyThrows
-    public static Product createProduct(ProductType type){
+    public static Product createProduct(ProductType type) {
         Random random = new Random();
 
-        return switch (type){
+        return switch (type) {
             case PHONE -> new Phone(
                     "Title-" + random.nextInt(1000),
                     random.nextInt(500),
@@ -44,7 +46,8 @@ public class ProductFactory {
                     random.nextInt(500),
                     random.nextDouble(1000.0),
                     "Model-" + random.nextInt(10),
-                    getRandomManufacturer()
+                    getRandomManufacturer(),
+                    random.nextInt(100) > 50 ? new ArrayList<>() : new ArrayList<>(List.of(Laptop.ALL_OF_THE_DETAILS[random.nextInt(Laptop.ALL_OF_THE_DETAILS.length)]))
             );
             case ELECTRICSCOOTER -> new ElectricScooter(
                     "Title-" + random.nextInt(1000),
@@ -58,24 +61,25 @@ public class ProductFactory {
         };
     }
 
-    public static void createAndSaveProduct(ProductType type){
-        switch (type){
+    public static void createAndSaveProduct(ProductType type) {
+        switch (type) {
             case PHONE -> PHONE_SERVICE.add((Phone) createProduct(type));
             case LAPTOP -> LAPTOP_SERVICE.add((Laptop) createProduct(type));
             case ELECTRICSCOOTER -> ELECTRIC_SCOOTER_SERVICE.add((ElectricScooter) createProduct(type));
             case DISCOUNTCARD -> DISCOUNT_CARD_SERVICE.add((DiscountCard) createProduct(type));
             default -> throw new IllegalArgumentException("Unknown product type: " + type);
-        };
+        }
+        ;
     }
 
-    public static void show(ProductType type){
+    public static void show(ProductType type) {
         ProductService<? extends Product> service = getProductService(type);
-        String products = service.getAll().stream().map((Product p)-> p.toString()).collect(Collectors.joining("\n"));
+        String products = service.getAll().stream().map((Product p) -> p.toString()).collect(Collectors.joining("\n"));
 
         System.out.println(products);
     }
 
-    public static SubProduct[] getItems(ProductType type){
+    public static SubProduct[] getItems(ProductType type) {
         List<? extends Product> list = getProductService(type).getAll();
 
         return list.stream()
@@ -91,7 +95,15 @@ public class ProductFactory {
         return values[index];
     }
 
-    public static ProductService<? extends Product> getProductService(ProductType type){
+    public static ProductType getRandomType() {
+        Random random = new Random();
+
+        final ProductType[] values = ProductType.values();
+        final int index = random.nextInt(values.length);
+        return values[index];
+    }
+
+    public static ProductService<? extends Product> getProductService(ProductType type) {
         return switch (type) {
             case PHONE -> PHONE_SERVICE;
             case LAPTOP -> LAPTOP_SERVICE;
