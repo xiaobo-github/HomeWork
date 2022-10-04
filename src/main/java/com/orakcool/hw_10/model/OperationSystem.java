@@ -3,9 +3,9 @@ package com.orakcool.hw_10.model;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
+@Setter
 public class OperationSystem {
-    @Getter
-    @Setter
         String designation;
         int version;
 

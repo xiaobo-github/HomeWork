@@ -1,17 +1,20 @@
-package com.orakcool.hw_10.app;
+package com.orakcool.hw_10.menu.impl;
 
+import com.orakcool.hw_10.menu.Item;
 import com.orakcool.hw_10.model.Product;
 import com.orakcool.hw_10.model.ProductType;
 import com.orakcool.hw_10.service.ProductFactory;
-import com.orakcool.hw_10.util.ProductComparator;
-import com.orakcool.hw_10.util.ProductsLinkedList;
+import com.orakcool.hw_10.util.collections.ProductComparator;
+import com.orakcool.hw_10.util.collections.ProductLinkedList;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ListApp {
-    public static void run() {
-        ProductsLinkedList<Product> myList = new ProductsLinkedList<>();
-        List<Product> javaList = new LinkedList<>();
+public class DemoList implements Item {
+    @Override
+    public void run() {
+        ProductLinkedList<Product> myList = new ProductLinkedList<>();
+        List<Product> javaList = new ArrayList<>();
 
         myList.add(ProductFactory.createProduct(ProductType.LAPTOP), 1);
         myList.add(ProductFactory.createProduct(ProductType.PHONE), 2);
@@ -32,9 +35,10 @@ public class ListApp {
         javaList.stream()
                 .sorted(new ProductComparator<>())
                 .forEach(product -> {
-            System.out.println("price: " + product.getPrice()
-                    + " title: " + product.getTitle()
-                    + " count: " + product.getCount());
-        });
+                    System.out.println("price: " + product.getPrice()
+                            + " title: " + product.getTitle()
+                            + " count: " + product.getCount());
+                });
+        System.out.println();
     }
 }

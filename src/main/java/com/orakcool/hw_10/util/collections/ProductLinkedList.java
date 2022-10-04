@@ -1,4 +1,4 @@
-package com.orakcool.hw_10.util;
+package com.orakcool.hw_10.util.collections;
 
 import com.orakcool.hw_10.model.Product;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.Optional;
 
-public class ProductsLinkedList<T extends Product> implements Iterable<T>{
+public class ProductLinkedList<T extends Product> implements Iterable<T>{
 
     transient private int size = 0;
     transient private Node<T> first;
@@ -107,7 +107,7 @@ public class ProductsLinkedList<T extends Product> implements Iterable<T>{
 
     class ProductListIterator implements Iterator<T> {
 
-        ProductsLinkedList<T>.Node<T> node;
+        ProductLinkedList<T>.Node<T> node;
 
         ProductListIterator(){
             node = first;

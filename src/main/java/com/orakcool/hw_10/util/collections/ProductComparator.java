@@ -1,4 +1,4 @@
-package com.orakcool.hw_10.util;
+package com.orakcool.hw_10.util.collections;
 
 import com.orakcool.hw_10.model.Product;
 
