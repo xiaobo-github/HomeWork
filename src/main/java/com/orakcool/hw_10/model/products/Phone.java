@@ -23,7 +23,7 @@ public class Phone extends Product {
         super(title, count, price, ProductType.PHONE);
         this.model = model;
         this.manufacturer = manufacturer;
-        this.operatingSystem = new OperationSystem("doesn't have",0);
+        this.operatingSystem = new OperationSystem("doesn't have", 0);
         this.created = LocalDateTime.now();
     }
 

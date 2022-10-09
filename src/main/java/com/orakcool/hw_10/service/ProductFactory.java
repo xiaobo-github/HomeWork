@@ -49,13 +49,12 @@ public class ProductFactory {
                     getRandomManufacturer(),
                     random.nextInt(100) > 50 ? new ArrayList<>() : new ArrayList<>(List.of(Laptop.ALL_OF_THE_DETAILS[random.nextInt(Laptop.ALL_OF_THE_DETAILS.length)]))
             );
-            case ELECTRICSCOOTER -> new ElectricScooter(
-                    "Title-" + random.nextInt(1000),
-                    random.nextInt(500),
-                    random.nextDouble(1000.0),
-                    "Model-" + random.nextInt(10),
-                    getRandomManufacturer()
-            );
+            case ELECTRICSCOOTER -> new ElectricScooter.Builder(random.nextDouble(), ProductType.ELECTRICSCOOTER)
+                    .title("Title-" + random.nextInt(1000))
+                    .count(random.nextInt(500) + 1)
+                    .model("Model-" + random.nextInt(10))
+                    .manufacturer(getRandomManufacturer())
+                    .build();
             case DISCOUNTCARD -> new DiscountCard();
             default -> throw new IllegalArgumentException("Unknown product type: " + type);
         };
