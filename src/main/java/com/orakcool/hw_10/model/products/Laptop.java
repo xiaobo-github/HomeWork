@@ -35,9 +35,9 @@ public class Laptop extends Product {
                 ", title='" + title + '\'' +
                 ", count=" + count +
                 ", price=" + price +
-                ", details{"+
+                ", details{" +
                 String.join(", ", details) +
-                '}'+
+                '}' +
                 '}';
     }
 }

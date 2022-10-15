@@ -12,7 +12,7 @@ public class DiscountCard extends Product {
     public String toString() {
         return "Discount_card{" +
                 "id='" + id + '\'' +
-                ", title='" + title + '\''+
+                ", title='" + title + '\'' +
                 '}';
     }
 }
