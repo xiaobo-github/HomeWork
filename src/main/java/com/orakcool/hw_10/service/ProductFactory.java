@@ -8,23 +8,27 @@ import com.orakcool.hw_10.model.products.ElectricScooter;
 import com.orakcool.hw_10.model.products.Laptop;
 import com.orakcool.hw_10.model.products.Phone;
 import com.orakcool.hw_10.repository.impl.DiscountCardRepository;
-import com.orakcool.hw_10.repository.impl.ElecricScooterRepository;
+import com.orakcool.hw_10.repository.impl.ElectricScooterRepository;
 import com.orakcool.hw_10.repository.impl.LaptopRepository;
 import com.orakcool.hw_10.repository.impl.PhoneRepository;
 import com.orakcool.hw_10.util.SubProduct;
+import com.orakcool.hw_10.annotations.Autowired;
 import lombok.SneakyThrows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 public class ProductFactory {
-    private static final ProductService<Phone> PHONE_SERVICE = new ProductService<>(new PhoneRepository());
-    private static final ProductService<Laptop> LAPTOP_SERVICE = new ProductService<>(new LaptopRepository());
-    private static final ProductService<ElectricScooter> ELECTRIC_SCOOTER_SERVICE = new ProductService<>(new ElecricScooterRepository());
-    private static final ProductService<DiscountCard> DISCOUNT_CARD_SERVICE = new ProductService<>(new DiscountCardRepository());
+    @Autowired
+    private static PhoneService PHONE_SERVICE;
+    @Autowired
+    private static LaptopService LAPTOP_SERVICE;
+    @Autowired
+    private static ElectricScooterService ELECTRIC_SCOOTER_SERVICE;
+    @Autowired
+    private static DiscountCardService DISCOUNT_CARD_SERVICE;
 
     private ProductFactory() {
     }

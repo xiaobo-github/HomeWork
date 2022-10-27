@@ -7,7 +7,7 @@ import java.io.*;
 
 public class Downloader {
     @SneakyThrows
-    public static @NotNull String load(String path){
+    public static @NotNull String load(String path) {
         String ln = "\n";
         StringBuilder result = new StringBuilder();
         InputStream inputStream = Thread.currentThread()

@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import static com.orakcool.hw_10.util.ParseXML.*;
 
-public class ParserXMLService <T extends Product> {
+public class ParserXMLService<T extends Product> {
     public T parse(String source) {
         String tag = matchTag(source, START_TAG);
 
@@ -18,8 +18,8 @@ public class ParserXMLService <T extends Product> {
 
             HashMap<String, ParseModel> model = ParseXML.matchModel(productSours);
             return parser.parse(model);
-        }catch (IllegalArgumentException E){
-            System.out.println("'"+tag+"' not found \n"+E);
+        } catch (IllegalArgumentException E) {
+            System.out.println("'" + tag + "' not found \n" + E);
         }
 
         return null;

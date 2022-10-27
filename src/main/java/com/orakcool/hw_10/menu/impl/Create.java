@@ -12,7 +12,7 @@ public class Create implements Item {
         Reader.readMenu(title, ProductType.values(), Create::createProduct);
     }
 
-    private static void createProduct(int input){
+    private static void createProduct(int input) {
         ProductFactory.createAndSaveProduct(ProductType.values()[input]);
     }
 }

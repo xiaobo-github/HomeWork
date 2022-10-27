@@ -11,7 +11,7 @@ public enum Items {
     EDIT("Edit product", new Edit()),
     DELETE("Delete product", new Delete()),
     LIST("Demo of a custom list of products", new DemoList()),
-    PARSERS("Demo of json and xml parsers",new DemoParsers()),
+    PARSERS("Demo of json and xml parsers", new DemoParsers()),
     TREE("Demo of binary tree", new DemoTree()),
     STEAM_API("Demo of stream api", new DemoStreamAPI());
 
@@ -26,10 +26,10 @@ public enum Items {
     }
 
     Items(String message, Item item) {
-        this(message,item,false);
+        this(message, item, false);
     }
 
-    public boolean run(){
+    public boolean run() {
         item.run();
         return exitFromMenu;
     }

@@ -10,12 +10,12 @@ public class App {
         menu();
     }
 
-    private static void menu(){
+    private static void menu() {
         boolean isExit = true;
-        do{
+        do {
             int item = Reader.menu(TITLE, Items.values(), true);
             isExit = Items.values()[item].run();
-        }while (!isExit);
+        } while (!isExit);
     }
 }
 

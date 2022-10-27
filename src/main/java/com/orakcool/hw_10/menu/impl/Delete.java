@@ -16,14 +16,14 @@ public class Delete implements Item {
         Reader.readMenu(title, ProductType.values(), Delete::chooseProduct);
     }
 
-    private static void chooseProduct(int type){
+    private static void chooseProduct(int type) {
         ProductType productType = ProductType.values()[type];
         String title = String.format("select the %s you want to remove:", productType.name().toLowerCase());
 
         SubProduct[] subProducts = ProductFactory.getItems(productType);
         int userInput = Reader.menu(title, subProducts, false);
         System.out.println(userInput);
-        if(userInput != EXIT_FROM_MENU) {
+        if (userInput != EXIT_FROM_MENU) {
             String id = subProducts[userInput - SET_EXIT_TO_ZERO].getId();
             ProductFactory.getProductService(productType).delete(id);
         }

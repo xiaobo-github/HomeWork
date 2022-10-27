@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.Optional;
 
-public class ProductLinkedList<T extends Product> implements Iterable<T>{
+public class ProductLinkedList<T extends Product> implements Iterable<T> {
 
     transient private int size = 0;
     transient private Node<T> first;
@@ -18,9 +18,9 @@ public class ProductLinkedList<T extends Product> implements Iterable<T>{
     /**
      * @param version product version to search for
      * @return the index of the first occurrence of the specified element in
-     *         this list, or -1 if this list does not contain the element
+     * this list, or -1 if this list does not contain the element
      */
-    public int indexOf(int version){
+    public int indexOf(int version) {
         int index = 0;
         for (Node<T> node = first; node != null; node = node.getNext()) {
             if (version == node.getVersion()) {
@@ -35,39 +35,39 @@ public class ProductLinkedList<T extends Product> implements Iterable<T>{
         Optional.ofNullable(find(version)).ifPresent(this::remove);
     }
 
-    public void remove(@NotNull Node<T> node){
-        if(node.hasPrev()){
-            if(node.hasNext()){
+    public void remove(@NotNull Node<T> node) {
+        if (node.hasPrev()) {
+            if (node.hasNext()) {
                 node.getPrev().setNext(node.getNext());
-            }else{
+            } else {
                 last = node.getPrev();
                 node.getPrev().setNext(null);
             }
-        }else if(node.hasNext()){
+        } else if (node.hasNext()) {
             first = node.getNext();
             node.getNext().setPrev(null);
-        }else{
+        } else {
             first = null;
         }
     }
 
-    public void addToHead(T product, int version){
-        if(first == null){
-            add(product,version);
-        }else{
-            first = new Node<>(version, product,null, first);
+    public void addToHead(T product, int version) {
+        if (first == null) {
+            add(product, version);
+        } else {
+            first = new Node<>(version, product, null, first);
         }
     }
 
-    public void change(T product, int version){
+    public void change(T product, int version) {
         Optional.ofNullable(find(version)).ifPresent(node -> node.setProduct(product));
     }
 
-    public void add(T product, int version){
-        if(size == 0){
+    public void add(T product, int version) {
+        if (size == 0) {
             first = new Node<>(version, product, null, null);
             last = first;
-        }else{
+        } else {
             Node<T> newPrev = last;
             last = new Node<>(version, product, newPrev, null);
             newPrev.setNext(last);
@@ -75,7 +75,7 @@ public class ProductLinkedList<T extends Product> implements Iterable<T>{
         size++;
     }
 
-    private Node<T> find(int version){
+    private Node<T> find(int version) {
         for (Node<T> node = first; node != null; node = node.getNext()) {
             if (version == node.getVersion()) {
                 return node;
@@ -93,11 +93,11 @@ public class ProductLinkedList<T extends Product> implements Iterable<T>{
         return size;
     }
 
-    public LocalDateTime getFirstVersionDate(){
+    public LocalDateTime getFirstVersionDate() {
         return first.getDate();
     }
 
-    public LocalDateTime getLastVersionDate(){
+    public LocalDateTime getLastVersionDate() {
         return last.getDate();
     }
 
@@ -109,7 +109,7 @@ public class ProductLinkedList<T extends Product> implements Iterable<T>{
 
         ProductLinkedList<T>.Node<T> node;
 
-        ProductListIterator(){
+        ProductListIterator() {
             node = first;
         }
 
@@ -128,22 +128,22 @@ public class ProductLinkedList<T extends Product> implements Iterable<T>{
 
     @Getter
     @Setter
-    class Node<T>{
+    class Node<T> {
         private int version;
         private LocalDateTime date;
         private T product;
         private Node<T> next;
         private Node<T> prev;
 
-        public boolean hasPrev(){
+        public boolean hasPrev() {
             return prev != null;
         }
 
-        public boolean hasNext(){
+        public boolean hasNext() {
             return next != null;
         }
 
-        Node(int version,T product, Node<T> prev, Node<T> next){
+        Node(int version, T product, Node<T> prev, Node<T> next) {
             this.version = version;
             this.date = LocalDateTime.now();
             this.product = product;

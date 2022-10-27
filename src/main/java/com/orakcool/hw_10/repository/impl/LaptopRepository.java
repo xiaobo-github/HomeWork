@@ -2,9 +2,11 @@ package com.orakcool.hw_10.repository.impl;
 
 import com.orakcool.hw_10.model.products.Laptop;
 import com.orakcool.hw_10.repository.AbstractCRUDRepository;
+import com.orakcool.hw_10.annotations.Singleton;
 
 import java.util.*;
 
+@Singleton
 public class LaptopRepository implements AbstractCRUDRepository<Laptop> {
     private final List<Laptop> laptops;
 
