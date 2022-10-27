@@ -15,14 +15,14 @@ public class ProductService<T extends Product> {
 
     public void add(T product) {
 
-        if(product == null){
+        if (product == null) {
             throw new IllegalArgumentException("added product must not be null");
         }
         repository.save(product);
     }
 
     public void update(T product) {
-        if(product == null){
+        if (product == null) {
             throw new IllegalArgumentException("updated product must not be null");
         }
         repository.update(product);

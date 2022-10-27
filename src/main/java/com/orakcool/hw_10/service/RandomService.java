@@ -10,19 +10,19 @@ public class RandomService {
 
     private Random random;
 
-    RandomService(){
+    RandomService() {
         random = new Random();
     }
 
-    public int nextInt(int range){
+    public int nextInt(int range) {
         return random.nextInt(range);
     }
 
-    public double nextDiscount(double range){
+    public double nextDiscount(double range) {
         return random.nextDouble(range);
     }
 
-    public Optional<Product> getOptionalProduct(){
+    public Optional<Product> getOptionalProduct() {
         final int losingChance = 3;
         Product[] products = {
                 ProductFactory.createProduct(ProductType.LAPTOP),

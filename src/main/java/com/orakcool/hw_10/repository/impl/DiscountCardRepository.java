@@ -2,9 +2,11 @@ package com.orakcool.hw_10.repository.impl;
 
 import com.orakcool.hw_10.model.products.DiscountCard;
 import com.orakcool.hw_10.repository.AbstractCRUDRepository;
+import com.orakcool.hw_10.annotations.Singleton;
 
 import java.util.*;
 
+@Singleton
 public class DiscountCardRepository implements AbstractCRUDRepository<DiscountCard> {
     private final List<DiscountCard> cards;
 

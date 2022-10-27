@@ -11,41 +11,41 @@ public class ParseModel {
     private final String parameter;
     private final HashMap<String, ParseModel> subMap;
 
-    public ParseModel(String parameter, HashMap<String, ParseModel> subMap){
+    public ParseModel(String parameter, HashMap<String, ParseModel> subMap) {
         this.parameter = parameter;
         this.subMap = subMap;
     }
 
-    public ParseModel(String parameter){
+    public ParseModel(String parameter) {
         this(parameter, new HashMap<>());
     }
 
-    public ParseModel(HashMap<String, ParseModel> subMap){
+    public ParseModel(HashMap<String, ParseModel> subMap) {
         this("", subMap);
     }
 
-    public boolean isParameterPresent(){
+    public boolean isParameterPresent() {
         return !parameter.equals("");
     }
 
-    public boolean isSubListPresent(){
+    public boolean isSubListPresent() {
         return !subMap.isEmpty();
     }
 
-    public double getDoubleParameter(){
+    public double getDoubleParameter() {
         return Double.parseDouble(getParameter());
     }
 
-    public int getIntParameter(){
+    public int getIntParameter() {
         return Integer.parseInt(getParameter());
     }
 
-    public LocalDateTime getDataTimeParameter(){
+    public LocalDateTime getDataTimeParameter() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
         return LocalDateTime.parse(getParameter(), formatter);
     }
 
-    public Manufacturer getManufacturerParameter(){
+    public Manufacturer getManufacturerParameter() {
         return Manufacturer.valueOf(getParameter());
     }
 

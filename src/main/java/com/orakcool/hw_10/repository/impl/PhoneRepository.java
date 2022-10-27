@@ -2,9 +2,11 @@ package com.orakcool.hw_10.repository.impl;
 
 import com.orakcool.hw_10.model.products.Phone;
 import com.orakcool.hw_10.repository.AbstractCRUDRepository;
+import com.orakcool.hw_10.annotations.Singleton;
 
 import java.util.*;
 
+@Singleton
 public class PhoneRepository implements AbstractCRUDRepository<Phone> {
     private final List<Phone> phones;
 

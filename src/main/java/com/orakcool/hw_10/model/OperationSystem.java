@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OperationSystem {
-        String designation;
-        int version;
+    String designation;
+    int version;
 
     public OperationSystem(String designation, int version) {
         this.designation = designation;

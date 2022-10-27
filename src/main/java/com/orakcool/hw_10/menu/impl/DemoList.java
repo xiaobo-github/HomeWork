@@ -28,7 +28,7 @@ public class DemoList implements Item {
         System.out.println("index find by version: " + myList.indexOf(2));
         System.out.println("---");
 
-        for (int i=0; i<10; i++) {
+        for (int i = 0; i < 10; i++) {
             javaList.add(ProductFactory.createProduct(ProductType.values()[0]));
         }
 

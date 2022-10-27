@@ -12,7 +12,7 @@ public class Show implements Item {
         Reader.readMenu(title, ProductType.values(), Show::showProducts);
     }
 
-    private static void showProducts(int input){
+    private static void showProducts(int input) {
         ProductFactory.show(ProductType.values()[input]);
     }
 }
